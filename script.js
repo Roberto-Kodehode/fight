@@ -21,6 +21,7 @@ class Sprite {
             height: 50
         }
         this.color = color
+        this.isAttacking
     }
 
     draw() {
@@ -43,6 +44,12 @@ class Sprite {
             this.velocity.y = 0
         } else
         this.velocity.y += gravity
+    }
+    attack() {
+        this.isAttacking = true
+        setTimeout(() => {
+            this.isAttacking = false
+        }, 100) 
     }
 }
 
@@ -113,7 +120,12 @@ function animate() {
     }
 
     // detect for collision
-    if (player.attackBox.position.x + player.attackBox.width >= enemy.position.x && player.attackBox.position.x <= enemy.position.x + enemy.width) {
+    if (player.attackBox.position.x + player.attackBox.width >= enemy.position.x &&
+        player.attackBox.position.x <= enemy.position.x + enemy.width &&
+        player.attackBox.position.y + player.attackBox.height >= enemy.position.y &&
+        player.attackBox.position.y <= enemy.position.y + enemy.height &&
+        player.isAttacking
+        ) {
         console.log("test")
     }
 }
@@ -122,17 +134,19 @@ animate()
 
 window.addEventListener("keydown", (event) => {
     switch (event.key) {
-        case "d" :
+        case "d":
             keys.d.pressed = true
             player.lastKey = "d"
             break
-        case "a" :
+        case "a":
             keys.a.pressed = true
             player.lastKey = "a"
             break
-        case "w" :
+        case "w":
             player.velocity.y = -20
             break
+        case " ":
+            player.attack()
             
         case "ArrowRight" :
             keys.ArrowRight.pressed = true
