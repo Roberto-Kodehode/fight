@@ -1,0 +1,32 @@
+#container {
+    position: relative;
+    display: inline-block;
+
+}
+
+#play-stats {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+
+}
+
+#player-health {
+    background-color: yellow;
+    height: 30px;
+    width: 100%;
+}
+
+#enemy-health {
+    background-color: yellow;
+    height: 30px;
+    width: 100%;
+}
+
+#timer {
+background-color: red;
+height: 100px;
+width: 100px;
+flex-shrink: 0;
+}
