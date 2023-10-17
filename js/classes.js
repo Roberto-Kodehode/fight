@@ -117,10 +117,23 @@ class Fighter extends Sprite {
         } else
              this.velocity.y += gravity
     }
+
     attack() {
         this.isAttacking = true
         setTimeout(() => {
             this.isAttacking = false
         }, 100) 
     }
+
+switchSprite(sprite){
+    switch (sprite) {
+        case "idle" :
+            break
+        case "run" :
+            break
+        case "jump" :
+            break
+    }
+}
+
 }
